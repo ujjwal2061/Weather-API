@@ -31,6 +31,7 @@ import Url from './API/Url';
          </div>
   </div>
   <Url countryname={country} />
+  
     </>
   )
  }
