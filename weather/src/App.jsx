@@ -16,18 +16,20 @@ import Url from './API/Url';
   }
   return(
     <>
-  <div>
-  <label>
-    Weather:
+  <div className=' '>
+  <label className='mr-4'>
+  Country-Name
   </label>
         <div>
     <input type='text'
-       placeholder='Country Name :'
+       placeholder='search'
         value={country}
         onChange={getvalue}/>
          </div>
          <div>
-          <button onClick={printvalue}>Search</button>
+          <button
+          className='ml-3'
+          onClick={printvalue}>Search</button>
          </div>
   </div>
   <Url countryname={country} />
