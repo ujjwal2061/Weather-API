@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Url from './API/Url';
 
 
  function App(){
@@ -29,6 +30,7 @@ import React, { useState } from 'react'
           <button onClick={printvalue}>Search</button>
          </div>
   </div>
+  <Url countryname={country} />
     </>
   )
  }
