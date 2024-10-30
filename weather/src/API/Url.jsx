@@ -3,7 +3,7 @@ import debounce from "lodash/debounce";
 
  const API_key=`4021d0edc956bf8e0bcf7670131760aa`
  
- function Url({countryname}){
+ function Url({countryname ,setWeatherDetails}){
       const [climate ,setclimate]=useState(null)
       //  function  that  show the api data .
      const getweather =async(countryname)=>{
@@ -13,7 +13,13 @@ import debounce from "lodash/debounce";
              const res= await fetch(url)
              const result=  await res.json();
              setclimate(result) // setClimate store the data that store in Result 
-             console.log(result) 
+             setWeatherDetails({
+                /// the SetWeather is props that pass from the App.jsx to URl.jsx it show the value of the Country
+                name:result.name,
+                climate:result.weather[0].main,
+                temp:(result.main.temp-273.15).toFixed(2),
+                description:result.weather[0].description,
+             })
             }catch(error){
                 console.log("Error:",error)
             }
@@ -25,6 +31,7 @@ import debounce from "lodash/debounce";
 
         // useEffect is use to  handle  side effect the  in React function
         // this part  run while the country name change for every country name change  
+       
         useEffect(()=>{
             if(countryname){
           debouncedGetWeather(countryname);
@@ -33,17 +40,9 @@ import debounce from "lodash/debounce";
                 debouncedGetWeather.cancel();
             };
         },[countryname])
-        if (!climate || !climate.weather || !climate.main ) 
-            return null;
-        const tempCelsius = climate.main.temp - 273.15;
-     return(
+        
 
-        <div>
-         <p>Name:{climate.name}</p>
-         <p>Climate:{climate.weather[0].main}</p>
-         <p>Temp:{tempCelsius.toFixed(2)}°C</p>
-        <p>Description:{climate.weather[0].description}</p>
-        </div>
-    )
+  
+     return null ;
    }
    export default Url;
