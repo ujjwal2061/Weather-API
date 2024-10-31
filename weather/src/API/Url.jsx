@@ -4,15 +4,17 @@ import debounce from "lodash/debounce";
  const API_key=`4021d0edc956bf8e0bcf7670131760aa`
  
  function Url({countryname ,setWeatherDetails}){
-      const [climate ,setclimate]=useState(null)
-      //  function  that  show the api data .
-     const getweather =async(countryname)=>{
+        
+        
+        //  function  that  show the api data .
+        const getweather =async(countryname)=>{
+         if(!countryname) return;
          const url=(`https://api.openweathermap.org/data/2.5/weather?q=${countryname}&appid=${API_key}`)
          try{
             // in this part we use await 
              const res= await fetch(url)
              const result=  await res.json();
-             setclimate(result) // setClimate store the data that store in Result 
+            // setClimate store the data that store in Result 
              setWeatherDetails({
                 /// the SetWeather is props that pass from the App.jsx to URl.jsx it show the value of the Country
                 name:result.name,

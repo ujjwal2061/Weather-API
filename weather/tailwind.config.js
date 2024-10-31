@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily:{
         'jetbrains': ['"JetBrains Mono"', 'monospace'],
+        'itim': ['Itim', 'cursive'],  
          'carter': ['"Carter One"', 'cursive'],
       }
     },
